@@ -1,0 +1,216 @@
+//this is a query builder written in c++ which buildes query and gives query as output which is ececutable in database mysql server.
+#include<bits/stdc++.h>
+using namespace std;
+#pragma GCC optimize("O1")
+#pragma GCC optimize("O2")
+#pragma GCC optimize("O3")
+#pragma GCC optimize("Og")
+#pragma GCC optimize("Ofast")
+#pragma comment(linker, "/STACK:16777216")
+#define ll long long
+#define Testcases while(1)
+#define ff(n) for(ll i=0;i<n;i++)
+#define fb(n) for(ll i=n-1;i>=0;i--)
+#define vc vector<ll>
+#define m_p map<ll,ll>
+#define stak stack<ll>
+#define que queue<ll>
+#define pir_ll pair<ll,ll>
+#define pir_int pair<int,int>
+#define LetsBegin int main()
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define swap(type, a, b) do { type t=(a);(a)=(b);(b)=t; } while (0)
+#define vec_frwd(arr) for(auto itr=arr.begin();itr!=arr.end();++itr)
+#define vec_bkwd(arr) for(auto itr=arr.rbegin();itr!=arr.rend();++itr)
+#define mp_frwd(arr) for(auto itr=arr.begin();itr!=arr.end();++itr)
+#define mp_bckwrd(arr) for(auto itr=arr.rbegin();itr!=arr.rend();++itr)
+#define auto_vec(arr) for(auto itr:arr)
+#define auto_mp(arr) for(auto itr:arr)
+#define endl "\n"
+
+
+class Name_Here
+{
+public:
+/*
+Code goes here if used!!!!!
+*/
+};
+
+
+
+/*
+
+//FAST_LCM of two numbers
+
+
+inline ll FAST_LCM()
+{
+ll a,b,a1,b1,temp;
+cin>>a>>b;
+
+a1=a,b1=b;
+ll GCD_AB;
+while(1)
+{
+    if(a1==0)
+    {
+        GCD_AB=b1;
+        break;
+    }
+    temp=b1%a1;
+    b1=a1;
+    a1=temp;
+
+}
+ll LCM_AB=(a*b)/GCD_AB;
+return LCM_AB;
+}
+
+
+
+*/
+
+
+
+
+inline void solve()
+{
+
+
+
+}
+
+// create table _table_name ( n1 datatype,.....)
+LetsBegin{
+
+//freopen("input1.txt","r",stdin);
+
+Testcases {
+
+int num_of_tables;
+cout<<"ENTER NUMBER OF TABLES YOU WANT TO CREATE"<<endl;
+cin>>num_of_tables;
+ll backup_table_number=num_of_tables;
+vector<string>tables;
+while(num_of_tables--)
+{
+    string final_querry="";
+    string first_part="create table ";
+    cout<<"ENTER THE TABLE NAME"<<endl;
+    string table_name;
+    cin>>table_name;
+    final_querry+="CREATE TABLE "+table_name+" (";
+    cout<<"ENTER THE NUMBER OF COLUMNS FOR THIS TABLE"<<endl;
+    ll number_of_colums;
+    cin>>number_of_colums;
+    vector<string>colums;
+    vector<string>datatype;
+    while(number_of_colums--)
+    {
+        string cur_name;
+        cin>>cur_name;
+        final_querry+=cur_name;
+        cout<<"CHOOSE THE DATA TYPE"<<endl;
+        cout<<"1.varchar 2.integer 3.number 4.date 5.timestamp"<<endl;
+        ll opt;
+        cin>>opt;
+        if(opt==1)
+        {
+            if(number_of_colums==0)
+            {
+                final_querry+=" varchar(50)";
+            continue;
+            }
+            final_querry+=" varchar(50),";
+            continue;
+        }
+        if(opt==2)
+        {
+            if(number_of_colums==0)
+            {
+                final_querry+=" integer";
+            continue;
+            }
+            final_querry+=" integer,";
+            continue;
+        }
+        if(opt==3)
+        {
+            if(number_of_colums==0)
+            {
+                final_querry+=" number";
+            continue;
+            }
+            final_querry+=" number,";
+            continue;
+        }
+        if(opt==4)
+        {
+            if(number_of_colums==0)
+            {
+                final_querry+=" date";
+            continue;
+            }
+            final_querry+=" date,";
+            continue;
+        }
+        if(opt==5)
+        {
+            if(number_of_colums==0)
+            {
+                final_querry+=" timestamp";
+            continue;
+            }
+            final_querry+=" timestamp,";
+            continue;
+        }
+    }
+    final_querry+=");";
+    tables.push_back(final_querry);
+
+}
+
+while(backup_table_number--)
+{
+
+    cout<<"ENTER THE TABLE NAME U WANT TO INSERT THE VALUES"<<endl;
+    string tablename;
+    cin>>tablename;
+    cout<<"enter number of columns\n";
+    ll temp_column_no;
+    cin>>temp_column_no;
+    cout<<"enter number of tuples\n";
+    ll temp_tuples;
+    cin>>temp_tuples;
+
+
+    while(temp_tuples--)
+    {
+         string temp_ans="";
+        temp_ans+="insert into "+tablename+" values( ";
+        for(ll i=0;i<temp_column_no;i++)
+        {
+            string s;
+            cin>>s;
+            if(i==temp_column_no-1)
+            {
+                temp_ans+=s+");";
+                tables.push_back(temp_ans);
+                break;
+            }
+            temp_ans+=s+" , ";
+        }
+    }
+
+}
+
+cout<<endl;
+cout<<endl;
+for(auto itr:tables)
+{
+    cout<<itr<<endl;
+}
+}
+
+}
